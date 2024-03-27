@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    color: #333; /* Dark grey text */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333; /* Dark grey header */
+    color: #fff; /* White text */
+    padding: 20px 0;
+    text-align: center;
+}
+
+header img.logo {
+    max-width: 100px;
+    height: auto;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Add more styles as needed */

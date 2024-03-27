@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/fileExpertLogoNew.png') }}" alt="File Expert Logo" style="max-width: 100px; max-height: 100px;">
+    </header>
+    <h2>Results</h2>
+    {% if result.match_result %}
+        <p>The file extension <strong>{{ result.file_extension }}</strong> matches the actual MIME type: <strong>{{ result.actual_mime_type }}</strong>.</p>
+    {% else %}
+        <p>Mismatch detected: The actual MIME type <strong>{{ result.actual_mime_type }}</strong> does not match the file extension <strong>{{ result.file_extension }}</strong>. Expected extension: <strong>{{ result.expected_extension }}</strong>.</p>
+    {% endif %}
+    <p>File Size: {{ result.file_size }} bytes</p>
+    <p>MD5: {{ result.md5_hash }}</p>
+    <p>SHA-256: {{ result.sha256_hash }}</p>
+    <a href="/">Upload another file</a>
+</body>
+</html>
