@@ -7,22 +7,27 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <img src="{{ url_for('static', filename='images/fileExpertLogoNew.png') }}" alt="File Expert Logo" class="logo">
-            <h1>Results</h1>
-        </div>
+        <img src="{{ url_for('static', filename='images/fileExpertLogoNew.png') }}" alt="File Expert Logo" class="logo">
+        <h1>Results</h1>
     </header>
+    
     <div class="container">
         <h2>Results</h2>
         {% if result.match_result %}
-            <p class="result success">The file extension <strong>{{ result.file_extension }}</strong> matches the actual MIME type: <strong>{{ result.actual_mime_type }}</strong>.</p>
+            <p class="result success">The file extension <strong>{{ result.file_extension }}</strong> matches the MIME type: <strong>{{ result.actual_mime_type }}</strong>.</p>
         {% else %}
-            <p class="result error">Mismatch detected: The actual MIME type <strong>{{ result.actual_mime_type }}</strong> does not match the file extension <strong>{{ result.file_extension }}</strong>. Expected extension: <strong>{{ result.expected_extension }}</strong>.</p>
+            <p class="result error">Mismatch: The MIME type <strong>{{ result.actual_mime_type }}</strong> does not match the extension <strong>{{ result.file_extension }}</strong>. Expected: <strong>{{ result.expected_extension }}</strong>.</p>
         {% endif %}
         <p class="result">File Size: <strong>{{ result.file_size | filesizeformat }}</strong></p>
         <p class="result">MD5: <strong>{{ result.md5_hash }}</strong></p>
         <p class="result">SHA-256: <strong>{{ result.sha256_hash }}</strong></p>
-        <a href="/" class="btn">Upload another file</a>
+        <p class="result"></p>
+        <a href="/" class="btn">Upload Another File</a>
     </div>
+
+    <div class="description-container">
+        <p>Here are the results of the file analysis. The program provides detailed information including MIME type verification and cryptographic hash values, offering insights into the file's content and authenticity for security and forensic analysis.</p>
+    </div>
+
 </body>
 </html>

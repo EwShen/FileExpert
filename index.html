@@ -7,17 +7,22 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <img src="{{ url_for('static', filename='images/fileExpertLogoNew.png') }}" alt="File Expert Logo" class="logo">
-            <h1>File Expert</h1>
-        </div>
+        <img src="{{ url_for('static', filename='images/fileExpertLogoNew.png') }}" alt="File Expert Logo" class="logo">
+        <h1>File Expert</h1>
     </header>
+    
+    
     <div class="container">
-        <h2>Upload a file to check its MIME type and hash values</h2>
+        <h2>Upload a File</h2>
         <form action="/upload" method="post" enctype="multipart/form-data">
             <input type="file" name="file" required>
             <input type="submit" value="Upload" class="btn">
         </form>
     </div>
+
+    <div class="description-container">
+        <p>FileExpert analyzes uploaded files to determine their MIME type, ensuring file integrity and security. By comparing the MIME type to the file extension, it helps to identify discrepancies and potential security risks, making it an important tool for digital forensics and cybersecurity efforts.</p>
+    </div>
+
 </body>
 </html>
