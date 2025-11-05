@@ -77,7 +77,9 @@ def check_extension_match_using_magic(file_storage):
     }
 
     mime_to_extension = {v: k for k, v in extension_to_mime.items()}
+    
     expected_extension = mime_to_extension.get(actual_mime_type)
+
     match_result = expected_extension == file_extension
 
     md5_hash = file_hash(filepath, 'md5')
@@ -123,6 +125,9 @@ def apply_security_headers(response):
     response.headers["X-Frame-Options"] = "SAMEORIGIN"
     response.headers["X-XSS-Protection"] = "1; mode=block"
     response.headers["Content-Security-Policy"] = "default-src 'self'"
+    response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains"
+    response.headers["Referrer-Policy"] = "no-referrer-when-downgrade"
+    response.headers["Feature-Policy"] = "geolocation 'self'; vibrate 'none'"
     return response
 
 # run debug in false to protect sensitive information

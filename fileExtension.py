@@ -4,7 +4,7 @@ import argparse
 import hashlib
 
 def file_hash(filepath, algorithm):
-    # Compute and return the hash of a file using the specified algorithm.
+    # Compute and return the hash of a file using the specified algorithm
     hash_obj = hashlib.new(algorithm)
     with open(filepath, 'rb') as f:
         for chunk in iter(lambda: f.read(4096), b""):
