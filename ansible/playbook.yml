@@ -1,0 +1,23 @@
+- hosts: local
+  gather_facts: yes
+  vars:
+    app_dir: "{{ playbook_dir | dirname }}"
+    venv_dir: "{{ app_dir }}/.venv"
+  tasks:
+    - name: Ensure Python venv tools present (Debian/Ubuntu)
+      apt:
+        name: python3-venv
+        state: present
+        update_cache: yes
+      become: yes
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Create virtualenv if missing
+      command: python3 -m venv {{ venv_dir }}
+      args:
+        creates: "{{ venv_dir }}/bin/activate"
+
+    - name: Install Python deps into venv
+      pip:
+        requirements: "{{ app_dir }}/requirements.txt"
+        virtualenv: "{{ venv_dir }}"
