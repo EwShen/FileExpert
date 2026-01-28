@@ -1,8 +1,9 @@
 - hosts: local
   gather_facts: yes
   vars:
-    app_dir: "{{ playbook_dir | dirname }}"
+    app_dir: "{{ playbook_dir }}/.."
     venv_dir: "{{ app_dir }}/.venv"
+
   tasks:
     - name: Ensure Python venv tools present (Debian/Ubuntu)
       apt:
